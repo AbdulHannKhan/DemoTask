@@ -1,12 +1,12 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {useAppSelector} from '../store/hooks';
-import ProductList from '../screens/App/Home';
+import Home from '../screens/App/Home';
 
 export const HomeScreens = [
 
   {
     name: 'HomeScreen',
-    component: ProductList,
+    component: Home,
     key: 'HomeScreen',
   },
  
