@@ -4,7 +4,7 @@
             "outputFile": "com.qp.padelclub.app-mergeDebugResources-49:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\QP\\.gradle\\caches\\transforms-3\\586c5a4ad28312b2710164893bd51534\\transformed\\material-1.6.1\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "/Users/hannankhan/.gradle/caches/transforms-3/586c5a4ad28312b2710164893bd51534/transformed/material-1.6.1/res/values-h320dp-port-v13/values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
