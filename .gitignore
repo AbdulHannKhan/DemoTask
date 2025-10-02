@@ -33,6 +33,13 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+*.log
+android/*.iml
+android/.idea/
+android/local.properties
+android/build/
+android/app/build/
+android/.gradle/
 
 # node.js
 #

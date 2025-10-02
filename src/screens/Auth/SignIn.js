@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, BackHandler, Keyboard, Text, View} from 'react-native';
+import {Animated, BackHandler, Image, Keyboard, Text, View} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Formik} from 'formik';
 import {useTranslation} from 'react-i18next';
@@ -22,77 +22,42 @@ import {setLoading} from '../../store/courtSlice';
 
 const SignIn = ({navigation, route}) => {
   const dispatch = useAppDispatch();
-  const {t} = useTranslation();
-  const isFocus = useIsFocused();
-  const {bookingData} = useAppSelector(state => state.court);
-  const {accessToken, fcmToken} = useAppSelector(state => state.onBoarding);
 
-  useEffect(() => {
-    if (isFocus && accessToken) {
-      navigationRef.goBack();
-    }
-  }, [isFocus]);
 
   const [initialValues, setInitialValues] = useState({
     email: '',
     password: '',
-    deviceToken: fcmToken,
     version: versionCode,
     companyDetailID: companyDetailID,
   });
 
-  const translateY = useRef(new Animated.Value(-100)).current; // Start higher
 
-  useEffect(() => {
-    isFocus && dispatch(setAccessToken1(''));
-    // getFCMToken();
-    isFocus && dispatch(setLoading(false));
-    // Start logo animation
-    Animated.timing(translateY, {
-      toValue: 0, // Move to normal position
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }, []);
 
   const handleLogin = async (values, resetForm) => {
     Keyboard.dismiss();
-    dispatch(login(values)).then(res => {
-      if (res?.error?.message !== 'Rejected') {
-        dispatch(setPostOnboard(true));
-        resetForm();
+    goToHomeAndResetStack(navigation, 'HomeStack');
 
-        if (bookingData) {
-          navigationRef.navigate('Home', {screen: 'BookingSummary'});
-        } else {
-          if (route?.params?.stack && route?.params?.data) {
-            navigationRef.navigate(route?.params?.stack, {
-              screen: route?.params?.data,
-            });
-          } else {
-            goToHomeAndResetStack(navigation, 'HomeTabs');
-          }
-        }
-      }
-    });
+  
   };
 
   return (
     <Wrapper>
-      <BackButton
-        onPress={() => {
-          navigationRef.goBack();
-        }}
-      />
+     
       {/* Animated Logo */}
       <View style={[styles.marginBM, styles.centerAlign]}>
-        {/* <Animated.View style={{transform: [{translateY}]}}> */}
-        <Logo width={moderateScale(width * 0.6)} height={moderateScale(90)} />
-        {/* </Animated.View> */}
+        <Image 
+        source={require('../../assets/images/bitrupt.png')} 
+        style={{width: moderateScale(width * 0.6), 
+        // height: moderateScale(200), 
+        marginTop: moderateScale(50),
+        resizeMode: 'contain'
+      }} 
+        />
+        {/* <Logo width={moderateScale(width * 0.6)} height={moderateScale(200)} /> */}
       </View>
 
       <View style={styles.justifyStart}>
-        <Text style={styles.heading3}>{t('SIGNIN')}</Text>
+        <Text style={styles.heading3}>{'Sign In'}</Text>
       </View>
 
       <Formik
@@ -103,9 +68,9 @@ const SignIn = ({navigation, route}) => {
         {({handleChange, handleSubmit, values, errors, isValid}) => (
           <View>
             <Input
-              label={t('EMAIL_ADDRESS')}
+              label={'Email Address'}
               required
-              placeholder={t('ENTER_EMAIL_ADDRESS')}
+              placeholder={'Enter Email Address'}
               onChangeText={handleChange('email')}
               labelValue={values.email}
               error={errors.email}
@@ -113,9 +78,9 @@ const SignIn = ({navigation, route}) => {
               autoComplete={'email'}
             />
             <Input
-              label={t('PASSWORD')}
+              label={'Password'}
               required
-              placeholder={t('ENTER_PASS')}
+              placeholder={'Enter Password'}
               secureTextEntry
               onChangeText={handleChange('password')}
               labelValue={values.password}
@@ -124,35 +89,16 @@ const SignIn = ({navigation, route}) => {
               autoComplete={'password'}
             />
 
-            <View
-              style={[styles.row, styles.centerAlign, styles.justifyBetween]}>
-              <View style={{width: '20%'}} />
-              <Text
-                onPress={() => navigation.navigate('VerifyPhone')}
-                style={[styles.normalSmall, styles.underlineTxt]}>
-                {t('FORGOT_PASS')}
-              </Text>
-            </View>
-
             <Button
               disable={!isValid}
               onPress={handleSubmit}
-              title={t('SIGNIN')}
+              title={'Sign In'}
             />
           </View>
         )}
       </Formik>
 
-      <Text
-        onPress={() => navigation.navigate('SignUp')}
-        style={[
-          styles.normalSmall,
-          styles.underlineTxt,
-          styles.marginVL,
-          {alignSelf: 'center'},
-        ]}>
-        {t('CREATE_ACC')}
-      </Text>
+    
     </Wrapper>
   );
 };

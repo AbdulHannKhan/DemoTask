@@ -552,7 +552,7 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(15),
   },
   paddingVL: {
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(50),
   },
   marginBS: {
     marginBottom: moderateScale(10),
