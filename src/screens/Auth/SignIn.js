@@ -18,7 +18,6 @@ import {login, setAccessToken1, setPostOnboard} from '../../store/onBoarding';
 import {navigationRef} from '../../navigation';
 import BackButton from '../../components/BackButton';
 import {goToHomeAndResetStack} from '../../helper/functions';
-import {setLoading} from '../../store/courtSlice';
 
 const SignIn = ({navigation, route}) => {
   const dispatch = useAppDispatch();

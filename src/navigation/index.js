@@ -12,7 +12,7 @@ import {
 } from '../store/onBoarding';
 import {
   setClearData1,
-} from '../store/courtSlice';
+} from '../store/productSlice';
 import AuthStack from './AuthStack';
 import HomeStack from './HomeStack';
 
@@ -26,9 +26,9 @@ const MainNavigation = () => {
     state => state.onBoarding,
   );
 
-  const cloading = useAppSelector(state => state.court.loading);
-  const cerror = useAppSelector(state => state.court.error);
-  const csuccess = useAppSelector(state => state.court.success);
+  const cloading = useAppSelector(state => state.product.loading);
+  const cerror = useAppSelector(state => state.product.error);
+  const csuccess = useAppSelector(state => state.product.success);
   
   useEffect(() => {
 

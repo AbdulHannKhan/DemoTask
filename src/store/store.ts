@@ -7,18 +7,18 @@ import {
 import {persistReducer, persistStore} from 'redux-persist';
 import {thunk} from 'redux-thunk';
 import common from './common';
-import court from './courtSlice';
+import product from './productSlice';
 import onBoarding from './onBoarding';
 const allReducer = combineReducers({
   common,
   onBoarding,
-  court,
+  product,
 });
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whiteList: ['onBoarding', 'court'],
+  whiteList: ['onBoarding', 'product'],
 };
 
 const persistedReducers = persistReducer(persistConfig, allReducer);

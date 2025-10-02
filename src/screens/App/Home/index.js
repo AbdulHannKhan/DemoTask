@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList, TextInput, ActivityIndicator, Text, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../store/courtSlice";
+import { getAllProducts } from "../../../store/productSlice";
 import ProductCard from "../../../components/ProductCard";
 import Input from "../../../components/Input";
 import styles from "../../../GlobalStyles";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { allProducts } = useSelector(state => state.court);
+  const { allProducts } = useSelector(state => state.product);
   const [search, setSearch] = useState("");
   console.log("Alllllll", allProducts);
 

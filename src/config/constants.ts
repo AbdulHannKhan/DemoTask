@@ -5,7 +5,7 @@ import {EnvironmentEnum} from '../helper/enums';
 import {Dimensions, Platform, ToastAndroid} from 'react-native';
 
 import Toast from 'react-native-toast-message';
-import {setCamPermission} from '../store/courtSlice';
+import {setCamPermission} from '../store/productSlice';
 
 export const height = Dimensions.get('window').height;
 export const width = Dimensions.get('window').width;
