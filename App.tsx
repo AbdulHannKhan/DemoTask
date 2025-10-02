@@ -11,8 +11,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import theme from './src/config/theme';
 import MainNavigation from './src/navigation';
 import { persister, store } from './src/store/store';
-import i18n from './src/config/i18n';
-import * as Sentry from '@sentry/react-native';
 
 const App = (): JSX.Element => {
 
@@ -36,8 +34,7 @@ const App = (): JSX.Element => {
   );
 };
 
-export default Sentry.wrap(App);
-// export default App;
+export default App;
 
 
 const styles = StyleSheet.create({
