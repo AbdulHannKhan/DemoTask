@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { moderateScale, scale, verticalScale } from "react-native-size-matters";
+import theme from "../config/theme";
 
 const ProductCard = ({ item, onPress }) => {
   return (
@@ -47,14 +48,14 @@ const styles = StyleSheet.create({
           justifyContent: "center",
         },
         title: {
-          fontSize: moderateScale(14),
-          fontWeight: "600",
+          fontSize: theme.fontSizes.regular,
+          fontFamily:theme.fonts.semiBold,
           color: "#333",
           marginBottom: verticalScale(4),
         },
         price: {
-          fontSize: moderateScale(13),
-          fontWeight: "bold",
+          fontSize: theme.fontSizes.small,
+          fontFamily:theme.fonts.bold,
           color: "#2a9d8f",
         },
       });
