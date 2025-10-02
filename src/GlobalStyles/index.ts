@@ -746,6 +746,12 @@ const styles = StyleSheet.create({
     fontFamily: theme.fonts.bold,
     color: theme.colors.primary,
   },
+
+  mainView:{
+    flex:1,
+    backgroundColor:theme.colors.surface,
+    padding:moderateScale(20)
+  },
   ////  ======== INPUT STYLES =========== ////////
 
   inputContainer: {

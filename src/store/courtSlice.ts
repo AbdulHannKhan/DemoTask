@@ -24,6 +24,23 @@ export const getHomeData = createAsyncThunk(
   },
 );
 
+export const getAllProducts = createAsyncThunk(
+  'products',
+  async (data: object, {rejectWithValue}: any) => {
+
+    return await apiCall({
+      path: API.GET_PRODUCTS,
+      method: 'get',
+      body: data,
+      rejectWithValue: rejectWithValue,
+    });
+  },
+);
+
+
+
+
+
 export const getBlockedTimes = createAsyncThunk(
   'booking/get-blocked-times',
   async (data: object, {rejectWithValue}: any) => {
@@ -209,6 +226,7 @@ interface courtState {
   allImages: Array<object>;
   allHomeImages: Array<object>;
   selectedLocData: any;
+  allProducts:Array<object>;
 }
 
 const initialState: courtState = {
@@ -230,6 +248,7 @@ const initialState: courtState = {
   apiCall: false,
   allImages: [],
   allHomeImages: [],
+  allProducts:[]
 };
 
 export const courtSlice = createSlice({
@@ -285,47 +304,32 @@ export const courtSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    createAsyncCases1(builder, getHomeData, {
-      fulfilled: (state, action) => {
-        if (compareData(state.homeData, action.payload.body)) {
-          state.homeData = action.payload.body;
-        }
+   
+   
+
+
+    createAsyncCases1(builder, getAllProducts, {
+      pending: (state, action) => {
+        state.listLoader = true;
+        state.loading = false;
       },
-    });
-    createAsyncCases1(builder, getBlockedTimes, {
+
+
       fulfilled: (state, action) => {
-        state.blockedSlots = action.payload.body?.items;
+        console.log("Actionnnnnnn",action);
+        state.allProducts=action.payload
+        state.listLoader = false;
+
+      },
+      rejected: (state, action) => {
+        state.listLoader = false;
       },
     });
 
-    createAsyncCases1(builder, getLocationsData, {
-      fulfilled: (state, action) => {
-        if (compareData(state.locationData, action?.payload?.body?.items)) {
-          state.locationData = action?.payload?.body?.items;
-        }
-      },
-    });
-    createAsyncCases1(builder, getLocationsDataNew, {
-      fulfilled: (state, action) => {
-        // if (compareData(state.locationData, action?.payload?.body?.items)) {
-        state.locationData = action?.payload?.body?.items;
-      },
-    });
-    createAsyncCases(builder, validateCoupon, {
-      fulfilled: (state, action) => {},
-    });
-    // createAsyncCases(builder, getImage, {
-    //   fulfilled: (state, action) => {
-    //     console.log(action, 'image');
-    //   },
-    // });
-    createAsyncCases(builder, addBooking, {
-      fulfilled: (state, action) => {},
-    });
 
-    createAsyncCases(builder, updateProfile, {
-      fulfilled: (state, action) => {},
-    });
+   
+   
+   
     createAsyncCases(builder, getBookings, {
       pending: (state, action) => {
         state.listLoader = true;
