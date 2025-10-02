@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310575973777",
+    "project_id": "padel-club-pk",
+    "storage_bucket": "padel-club-pk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310575973777:android:170aace93dc39fff6f4630",
+        "android_client_info": {
+          "package_name": "com.qp.padelclub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoGx6uPU9zkueF8VJZDeg3J-MyCM3qqwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
