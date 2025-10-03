@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
 import { View, FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../../store/productSlice";
 import ProductCard from "../../../components/ProductCard";
 import Input from "../../../components/Input";
@@ -11,13 +10,14 @@ import { moderateScale } from "react-native-size-matters";
 import theme from "../../../config/theme";
 import { clearCart } from "../../../store/cartSlice";
 import { logoutUser } from "../../../store/onBoarding";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const Home = ({ navigation }) => {
-  const dispatch = useDispatch();
-  const { allProducts } = useSelector(state => state.product);
+  const dispatch = useAppDispatch();
+  const { allProducts } = useAppSelector(state => state.product);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useAppSelector((state) => state.cart.items);
 
   useEffect(() => {
     dispatch(getAllProducts());

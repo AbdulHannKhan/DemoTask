@@ -10,7 +10,7 @@ const ProductCard = ({ item, onPress }) => {
       <Image source={{ uri: item?.image }} style={styles.image} />
       <View style={styles.info}>
         <Text numberOfLines={2} style={styles.title}>
-          {item.title}
+          {item?.title}
         </Text>
         <Text style={styles.price}>Rs.{item?.price.toFixed(2)}</Text>
       </View>
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
         title: {
           fontSize: theme.fontSizes.regular,
           fontFamily:theme.fonts.semiBold,
-          color: "#333",
+          color: theme.colors.text,
           marginBottom: verticalScale(4),
         },
         price: {
           fontSize: theme.fontSizes.small,
           fontFamily:theme.fonts.bold,
-          color: "#2a9d8f",
+          color: theme.colors.primary,
         },
       });

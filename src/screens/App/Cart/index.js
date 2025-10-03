@@ -7,7 +7,6 @@ import {
   StyleSheet,
   FlatList,
 } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
 import { moderateScale } from "react-native-size-matters";
 import {
   increaseQuantity,
@@ -20,31 +19,32 @@ import BackButton from "../../../components/BackButton";
 import Entypo from 'react-native-vector-icons/Entypo'
 import Button from "../../../components/Button";
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const Cart = ({ navigation }) => {
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((state) => state?.cart?.items);
 
   const totalPrice = cartItems
-    .reduce((sum, item) => sum + item.price * item.quantity, 0)
+    .reduce((sum, item) => sum + item?.price * item?.quantity, 0)
     .toFixed(2);
 console.log("Cart Items",cartItems);
 
     
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <Image source={{ uri: item?.image }} style={styles.image} />
 
       <View style={styles.infoContainer}>
         <Text style={styles.title} numberOfLines={2}>
-          {item.title}
+          {item?.title}
         </Text>
-        <Text style={styles.price}>${item.price}</Text>
+        <Text style={styles.price}>${item?.price}</Text>
 
         <View style={styles.qtyContainer}>
           <TouchableOpacity
             style={styles.qtyButton}
-            onPress={() => dispatch(decreaseQuantity(item.id))}
+            onPress={() => dispatch(decreaseQuantity(item?.id))}
           >
             <Entypo
               name={'minus'}
@@ -52,11 +52,11 @@ console.log("Cart Items",cartItems);
               color={theme.colors.surface} />          
               </TouchableOpacity>
 
-          <Text style={styles.qtyText}>{item.quantity}</Text>
+          <Text style={styles.qtyText}>{item?.quantity}</Text>
 
           <TouchableOpacity
             style={styles.qtyButton}
-            onPress={() => dispatch(increaseQuantity(item.id))}
+            onPress={() => dispatch(increaseQuantity(item?.id))}
           >
             <Entypo
               name={'plus'}
@@ -68,7 +68,7 @@ console.log("Cart Items",cartItems);
 
       <TouchableOpacity
         style={styles.removeButton}
-        onPress={() => dispatch(removeFromCart(item.id))}
+        onPress={() => dispatch(removeFromCart(item?.id))}
       >
         <AntDesign 
         name={'delete'} 
@@ -86,12 +86,12 @@ console.log("Cart Items",cartItems);
         borderHide={true}
         onPress={() => navigation.goBack()}
       />
-      {cartItems.length > 0 ? (
+      {cartItems?.length > 0 ? (
         <>
           <FlatList
             data={cartItems}
             showsVerticalScrollIndicator={false}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item?.id.toString()}
             renderItem={renderItem}
             contentContainerStyle={{ paddingBottom: moderateScale(100) }}
           />

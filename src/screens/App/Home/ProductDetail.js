@@ -7,7 +7,6 @@ import {
     StyleSheet,
     ScrollView,
 } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
 import { moderateScale } from "react-native-size-matters";
 import Wrapper from "../../../components/wrapper";
 import Button from "../../../components/Button";
@@ -15,14 +14,14 @@ import theme from "../../../config/theme";
 import Entypo from 'react-native-vector-icons/Entypo'
 import BackButton from "../../../components/BackButton";
 import { addToCart } from "../../../store/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const ProductDetailScreen = ({ navigation, route }) => {
-    const cartItems = useSelector((state) => state.cart.items);
-
+    const dispatch = useAppDispatch();
+    const cartItems = useAppSelector((state) => state?.cart?.items);
     const { product } = route.params;
     console.log("Detail", product);
 
-    const dispatch = useDispatch();
 
     const [quantity, setQuantity] = useState(1);
     const increaseQty = () => setQuantity(quantity + 1);
@@ -42,20 +41,20 @@ const ProductDetailScreen = ({ navigation, route }) => {
             />
             <ScrollView showsVerticalScrollIndicator={false}>
 
-            <Image source={{ uri: product.image }} style={styles.image} />
+            <Image source={{ uri: product?.image }} style={styles.image} />
 
             <View style={styles.infoContainer}>
-                <Text style={styles.title}>{product.title}</Text>
-                <Text style={styles.category}>{product.category}</Text>
-                <Text style={styles.price}>${product.price}</Text>
+                <Text style={styles.title}>{product?.title}</Text>
+                <Text style={styles.category}>{product?.category}</Text>
+                <Text style={styles.price}>${product?.price}</Text>
 
                 <View style={styles.ratingContainer}>
                     <Text style={styles.ratingText}>
-                        ⭐ {product.rating?.rate} ({product.rating?.count} reviews)
+                        ⭐ {product?.rating?.rate} ({product?.rating?.count} reviews)
                     </Text>
                 </View>
 
-                <Text style={styles.description}>{product.description}</Text>
+                <Text style={styles.description}>{product?.description}</Text>
 
                 <View style={styles.qtyContainer}>
                     <TouchableOpacity style={styles.qtyButton} onPress={decreaseQty}>
@@ -88,7 +87,6 @@ const ProductDetailScreen = ({ navigation, route }) => {
 };
 
 export default ProductDetailScreen;
-
 const styles = StyleSheet.create({
 
     image: {

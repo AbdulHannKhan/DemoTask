@@ -9,11 +9,11 @@ import Wrapper from '../../components/wrapper';
 import {companyDetailID, versionCode, width} from '../../config/constants';
 import {LoginSchema} from '../../config/forms';
 import {goToHomeAndResetStack} from '../../helper/functions';
-import { useDispatch } from 'react-redux';
 import { setUserData } from '../../store/onBoarding';
+import { useAppDispatch } from '../../store/hooks';
 
 const SignIn = ({navigation, route}) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [initialValues, setInitialValues] = useState({
     email: '',
     password: '',
