@@ -9,16 +9,18 @@ import {thunk} from 'redux-thunk';
 import common from './common';
 import product from './productSlice';
 import onBoarding from './onBoarding';
+import cart from './cartSlice'
 const allReducer = combineReducers({
   common,
   onBoarding,
   product,
+  cart,
 });
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whiteList: ['onBoarding', 'product'],
+  whiteList: ['onBoarding', 'product','cart'],
 };
 
 const persistedReducers = persistReducer(persistConfig, allReducer);

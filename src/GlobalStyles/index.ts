@@ -8,52 +8,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.surface,
     paddingHorizontal: moderateScale(20),
+    paddingVertical:moderateScale(20)
   },
 
-  courtSelect: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: moderateScale(10),
-    width: 'auto',
-    paddingVertical: moderateScale(10),
-    paddingHorizontal: moderateScale(15),
-    borderRadius: 100,
-    borderWidth: 1,
-    borderColor: theme.colors.border,
-  },
-  courtFont: {
-    fontFamily: theme.fonts.regular,
-    textAlign: 'center',
-    fontSize: theme.fontSizes.regular,
-    lineHeight: moderateScale(16),
-  },
-  inputBorder: {
-    backgroundColor: theme.colors.surface,
-    borderWidth: 1,
-    borderRadius: moderateScale(8),
-    borderColor: theme.colors.primary,
-  },
-  notiText: {
-    fontSize: theme.fontSizes.regular,
-    marginRight: moderateScale(25),
-    marginVertical: moderateScale(5),
-    lineHeight: moderateScale(26),
-  },
-  notifyDot: {
-    backgroundColor: theme.colors.red,
-    width: moderateScale(6),
-    height: moderateScale(6),
-    borderRadius: moderateScale(6 / 2),
 
-    position: 'absolute',
-    top: moderateScale(7),
-    right: moderateScale(10),
-  },
-  previewImg: {
-    borderRadius: moderateScale(8),
-    width: moderateScale(136),
-    height: moderateScale(124),
-  },
+  
   termsView: {
     width: '90%',
     alignSelf: 'center',
@@ -89,38 +48,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: 0,
   },
-  slotContainer: {
-    width: '48%',
-    height: moderateScale(38),
-    backgroundColor: theme.colors.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: moderateScale(8),
-    elevation: 3, // For Android shadow
-    shadowColor: '#000', // For iOS shadow
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-  },
-  slotContainer2: {
-    width: '21%',
-    height: moderateScale(38),
-    backgroundColor: theme.colors.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: moderateScale(8),
-    elevation: 3, // For Android shadow
-    shadowColor: '#000', // For iOS shadow
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-  },
-  date: {
-    borderRadius: moderateScale(8),
-
-    width: moderateScale(65),
-    height: moderateScale(81),
-  },
 
   shadow: {
     shadowColor: '#000',
@@ -130,13 +57,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: theme.colors.surface,
   },
-  courtStyle: {
-    flex: 1,
-    marginTop: -moderateScale(25),
-    backgroundColor: theme.colors.surface,
-    borderTopLeftRadius: moderateScale(16),
-    borderTopRightRadius: moderateScale(16),
-  },
+
   tabBack: {
     borderRadius: moderateScale(100),
     padding: moderateScale(10),
@@ -239,6 +160,18 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: moderateScale(60),
     width: moderateScale(60),
+  },
+  cartView:{
+    position: 'absolute',
+    top: -5,
+    right: -10,
+    backgroundColor: theme.colors.danger,
+    borderRadius: 20,
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    minWidth: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   activeHeading: {
     color: theme.colors.darkText,
@@ -747,11 +680,36 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
 
-  mainView:{
-    flex:1,
-    backgroundColor:theme.colors.surface,
-    padding:moderateScale(20)
+
+  ////  ======== TAB STYLES =========== ////////
+
+  tabsContainer: {
+    flexDirection: "row",
+    marginVertical: moderateScale(10),
   },
+  tab: {
+    paddingVertical: moderateScale(6),
+    paddingHorizontal: moderateScale(15),
+    borderRadius: moderateScale(20),
+    backgroundColor: "#f0f0f0",
+    marginRight: moderateScale(10),
+  },
+  activeTab: {
+    backgroundColor: theme.colors.primary,
+  },
+  tabText: {
+    color: theme.colors.text,
+    fontFamily:theme.fonts.regular,
+    fontSize:theme.fontSizes.regular,
+
+  },
+  activeTabText: {
+    color:theme.colors.surface,
+    fontFamily:theme.fonts.semiBold,
+    fontSize:theme.fontSizes.regular
+  },
+
+
   ////  ======== INPUT STYLES =========== ////////
 
   inputContainer: {

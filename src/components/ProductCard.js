@@ -6,12 +6,12 @@ import theme from "../config/theme";
 const ProductCard = ({ item, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <Image source={{ uri: item?.image }} style={styles.image} />
       <View style={styles.info}>
         <Text numberOfLines={2} style={styles.title}>
           {item.title}
         </Text>
-        <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+        <Text style={styles.price}>Rs.{item?.price.toFixed(2)}</Text>
       </View>
     </TouchableOpacity>
   );

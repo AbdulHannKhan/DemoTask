@@ -29,7 +29,11 @@ const MainNavigation = () => {
   const cloading = useAppSelector(state => state.product.loading);
   const cerror = useAppSelector(state => state.product.error);
   const csuccess = useAppSelector(state => state.product.success);
-  
+  const { userData } = useAppSelector(
+    state => state.onBoarding,
+  );
+console.log("userrrrrrrr",userData);
+
   useEffect(() => {
 
     error && showErrorToast(error);
@@ -75,8 +79,17 @@ const MainNavigation = () => {
       {<Loader isLoading={cloading} />}
 
       <MainStack.Navigator screenOptions={{headerShown: false}}>
-        <MainStack.Screen name={'AuthStack'} component={AuthStack} />
-        <MainStack.Screen name={'HomeStack'} component={HomeStack} />
+
+
+      {userData ? (
+          // ✅ Agar userData hai to HomeStack
+          <MainStack.Screen name="HomeStack" component={HomeStack} />
+        ) : (
+          // ✅ Agar login nahi hai to AuthStack
+          <MainStack.Screen name="AuthStack" component={AuthStack} />
+        )}
+
+       
       </MainStack.Navigator>
 
       <Toast />

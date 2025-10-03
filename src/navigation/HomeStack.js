@@ -1,15 +1,26 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {useAppSelector} from '../store/hooks';
 import Home from '../screens/App/Home';
+import ProductDetail from '../screens/App/Home/ProductDetail';
+import Cart from '../screens/App/Cart';
 
 export const HomeScreens = [
 
   {
-    name: 'HomeScreen',
+    name: 'Home',
     component: Home,
-    key: 'HomeScreen',
+    key: 'Home',
   },
- 
+  {
+    name: 'ProductDetail',
+    component: ProductDetail,
+    key: 'ProductDetail',
+  },
+  {
+    name: 'Cart',
+    component: Cart,
+    key: 'Cart',
+  },
 ];
 
 const HomeNav = createStackNavigator();

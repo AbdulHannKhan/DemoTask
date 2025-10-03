@@ -1,28 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, BackHandler, Image, Keyboard, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, Keyboard, Text, View} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Formik} from 'formik';
-import {useTranslation} from 'react-i18next';
-import messaging from '@react-native-firebase/messaging';
-import {useIsFocused} from '@react-navigation/native';
-
 import styles from '../../GlobalStyles';
-import Logo from '../../assets/images/applogo1.svg';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Wrapper from '../../components/wrapper';
 import {companyDetailID, versionCode, width} from '../../config/constants';
 import {LoginSchema} from '../../config/forms';
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {login, setAccessToken1, setPostOnboard} from '../../store/onBoarding';
-import {navigationRef} from '../../navigation';
-import BackButton from '../../components/BackButton';
 import {goToHomeAndResetStack} from '../../helper/functions';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../../store/onBoarding';
 
 const SignIn = ({navigation, route}) => {
-  const dispatch = useAppDispatch();
-
-
+  const dispatch = useDispatch();
   const [initialValues, setInitialValues] = useState({
     email: '',
     password: '',
@@ -30,13 +21,11 @@ const SignIn = ({navigation, route}) => {
     companyDetailID: companyDetailID,
   });
 
-
-
   const handleLogin = async (values, resetForm) => {
     Keyboard.dismiss();
-    goToHomeAndResetStack(navigation, 'HomeStack');
+    dispatch(setUserData({ email: values.email, token: 'dummy_token_123' }));
 
-  
+    goToHomeAndResetStack(navigation, 'HomeStack');
   };
 
   return (
@@ -47,14 +36,11 @@ const SignIn = ({navigation, route}) => {
         <Image 
         source={require('../../assets/images/bitrupt.png')} 
         style={{width: moderateScale(width * 0.6), 
-        // height: moderateScale(200), 
         marginTop: moderateScale(50),
         resizeMode: 'contain'
       }} 
         />
-        {/* <Logo width={moderateScale(width * 0.6)} height={moderateScale(200)} /> */}
       </View>
-
       <View style={styles.justifyStart}>
         <Text style={styles.heading3}>{'Sign In'}</Text>
       </View>
@@ -87,7 +73,6 @@ const SignIn = ({navigation, route}) => {
               textContentType={'password'}
               autoComplete={'password'}
             />
-
             <Button
               disable={!isValid}
               onPress={handleSubmit}

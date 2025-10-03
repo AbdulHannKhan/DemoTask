@@ -10,12 +10,14 @@ import styles from '../GlobalStyles';
 type ContainerProps = {
   children: React.ReactNode;
   style: object;
+  scrollEnabled:boolean
 };
 
-const Wrapper = ({children, style}: ContainerProps) => {
+const Wrapper = ({children, style,scrollEnabled}: ContainerProps) => {
   return (
     <View style={[styles.main, style]}>
       <ScrollView
+        scrollEnabled={scrollEnabled}
         contentContainerStyle={style}
         keyboardShouldPersistTaps={'handled'}
         showsVerticalScrollIndicator={false}>
