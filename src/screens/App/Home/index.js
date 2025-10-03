@@ -48,6 +48,7 @@ const Home = ({ navigation }) => {
     <Wrapper scrollEnabled={false} style={{flex:1}}>
        <BackButton
                 borderHide={true}
+                arrow={true}
                 onPress={() => navigation.goBack()}
                 title="Products"
                 cart={true}

@@ -22,6 +22,7 @@ type ButtonProps = {
   extraBtnDisable?: boolean;
   showBackButton?: boolean;
   logout?: boolean;
+  arrow?:boolean;
   cart?: boolean;
   onPressLogout?: () => void;
   onPressCart?: () => void;
@@ -45,6 +46,7 @@ const BackButton = ({
   logout,
   onPressLogout,
   onPressCart,
+  arrow,
   cartCount = 0,
 }: ButtonProps) => {
   const langDir = i18next.dir();
@@ -61,6 +63,7 @@ const BackButton = ({
       ]}>
       {showBackButton && (
         <View style={[styles.row, styles.centerAlign]}>
+          {arrow? null:
           <TouchableOpacity
             disabled={disable}
             onPress={() => {
@@ -78,6 +81,7 @@ const BackButton = ({
               style={{ marginTop: moderateScale(5) }}
             />
           </TouchableOpacity>
+}
           <Text
             style={[
               langDir === 'rtl' ? styles.regularBold : styles.heading2,

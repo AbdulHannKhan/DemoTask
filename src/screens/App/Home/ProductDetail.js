@@ -5,6 +5,7 @@ import {
     Image,
     TouchableOpacity,
     StyleSheet,
+    ScrollView,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { moderateScale } from "react-native-size-matters";
@@ -31,7 +32,7 @@ const ProductDetailScreen = ({ navigation, route }) => {
 
 
     return (
-        <Wrapper>
+        <Wrapper scrollEnabled={false} style={{flex:1}}>
             <BackButton
                 borderHide={true}
                 onPress={() => navigation.goBack()}
@@ -39,6 +40,8 @@ const ProductDetailScreen = ({ navigation, route }) => {
                 cartCount={cartItems?.length}
                 cart={true}
             />
+            <ScrollView showsVerticalScrollIndicator={false}>
+
             <Image source={{ uri: product.image }} style={styles.image} />
 
             <View style={styles.infoContainer}>
@@ -60,7 +63,7 @@ const ProductDetailScreen = ({ navigation, route }) => {
                             name={'minus'}
                             color={theme.colors.surface}
                             size={moderateScale(20)}
-                        />
+                            />
                     </TouchableOpacity>
 
                     <Text style={styles.qtyText}>{quantity}</Text>
@@ -79,6 +82,7 @@ const ProductDetailScreen = ({ navigation, route }) => {
                         navigation.navigate("Cart");
                     }} />
             </View>
+                    </ScrollView>
         </Wrapper>
     );
 };
