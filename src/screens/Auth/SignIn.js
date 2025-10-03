@@ -23,7 +23,7 @@ const SignIn = ({navigation, route}) => {
 
   const handleLogin = async (values, resetForm) => {
     Keyboard.dismiss();
-    dispatch(setUserData({ email: values.email, token: 'dummy_token_123' }));
+    dispatch(setUserData({ email: values?.email, token: 'dummy_token_123' }));
 
     goToHomeAndResetStack(navigation, 'HomeStack');
   };
@@ -56,8 +56,8 @@ const SignIn = ({navigation, route}) => {
               required
               placeholder={'Enter Email Address'}
               onChangeText={handleChange('email')}
-              labelValue={values.email}
-              error={errors.email}
+              labelValue={values?.email}
+              error={errors?.email}
               textContentType={'emailAddress'}
               autoComplete={'email'}
             />
@@ -67,8 +67,8 @@ const SignIn = ({navigation, route}) => {
               placeholder={'Enter Password'}
               secureTextEntry
               onChangeText={handleChange('password')}
-              labelValue={values.password}
-              error={errors.password}
+              labelValue={values?.password}
+              error={errors?.password}
               textContentType={'password'}
               autoComplete={'password'}
             />

@@ -1,5 +1,4 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {useAppSelector} from '../store/hooks';
 import Home from '../screens/App/Home';
 import ProductDetail from '../screens/App/Home/ProductDetail';
 import Cart from '../screens/App/Cart';
@@ -26,7 +25,6 @@ export const HomeScreens = [
 const HomeNav = createStackNavigator();
 
 const HomeStack = () => {
-  const {userData} = useAppSelector(state => state.onBoarding);
 
   return (
     <HomeNav.Navigator screenOptions={{headerShown: false}}>
