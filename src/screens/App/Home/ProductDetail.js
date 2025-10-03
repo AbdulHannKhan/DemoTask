@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
         fontSize: theme.fontSizes.regular,
         color: theme.colors.text,
         fontFamily: theme.fonts.regular,
-        // marginBottom: moderateScale(5),
     },
     price: {
         fontSize: theme.fontSizes.big,

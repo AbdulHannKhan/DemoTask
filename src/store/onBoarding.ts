@@ -6,8 +6,6 @@ import {getToken, getToken1} from './getToken';
 import crashlytics from '@react-native-firebase/crashlytics';
 import {setUser} from "@sentry/react-native";
 
-
-
 export const login = createAsyncThunk(
   'auth/login',
   async (data: object, {rejectWithValue}: any) => {
@@ -19,9 +17,6 @@ export const login = createAsyncThunk(
     });
   },
 );
-
-
-
 
 interface AuthState {
   accessToken: string;
@@ -112,8 +107,6 @@ export const authSlice = createSlice({
       state.userData = {};    
      
     },
-
-
 
   },
   extraReducers: builder => {

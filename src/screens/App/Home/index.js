@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { View, FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { getAllProducts } from "../../../store/productSlice";
@@ -14,27 +13,27 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const Home = ({ navigation }) => {
   const dispatch = useAppDispatch();
-  const { allProducts } = useAppSelector(state => state.product);
+  const { allProducts } = useAppSelector(state => state?.product);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const cartItems = useAppSelector((state) => state.cart.items);
+  const cartItems = useAppSelector((state) => state?.cart?.items);
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  const categories = ["All", ...new Set(allProducts.map(p => p.category))];
+  const categories = ["All", ...new Set(allProducts?.map(p => p.category))];
 
   const filtered = allProducts.filter(p => {
     const searchLower = search.toLowerCase();
 
     const matchSearch =
-    p.title.toLowerCase().includes(searchLower) ||
-    p.price.toString().toLowerCase().includes(searchLower);    
+    p?.title.toLowerCase().includes(searchLower) ||
+    p?.price.toString().toLowerCase().includes(searchLower);    
     if (selectedCategory === "All") {
       return matchSearch;
     }
-    return p.category === selectedCategory && matchSearch;
+    return p?.category === selectedCategory && matchSearch;
   });
 
   const renderItem = ({ item }) => (
@@ -149,7 +148,7 @@ emptyContainer: {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
-  marginTop: moderateScale(100), // adjust as needed
+  marginTop: moderateScale(100),
 },
 emptyIcon: {
   fontSize: moderateScale(50),
@@ -161,6 +160,5 @@ emptyText: {
   color: theme.colors.text,
   marginBottom: moderateScale(5),
 },
-
 
 })

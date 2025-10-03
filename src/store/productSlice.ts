@@ -17,8 +17,6 @@ export const getAllProducts = createAsyncThunk(
   },
 );
 
-
-
 interface productState {
   listLoader: boolean;
   status: string;
@@ -62,14 +60,11 @@ export const productSlice = createSlice({
   },
   extraReducers: builder => {
    
-   
-
     createAsyncCases1(builder, getAllProducts, {
       pending: (state, action) => {
         state.listLoader = true;
         state.loading = false;
       },
-
 
       fulfilled: (state, action) => {
         console.log("Success",action);
@@ -83,7 +78,6 @@ export const productSlice = createSlice({
         
       },
     });
-
 
   },
 });

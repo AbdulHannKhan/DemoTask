@@ -95,15 +95,12 @@ console.log("Cart Items",cartItems);
             renderItem={renderItem}
             contentContainerStyle={{ paddingBottom: moderateScale(100) }}
           />
-
-          {/* Checkout Bar */}
           <View style={styles.checkoutBar}>
             <Text style={styles.totalText}>Total: ${totalPrice}</Text>
             <Button 
             title="Checkout" style={{width:'35%'}}
             onPress={()=>navigation.navigate('Home')}
             />
-
           </View>
         </>
       ) : (
