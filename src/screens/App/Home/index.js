@@ -10,6 +10,7 @@ import BackButton from "../../../components/BackButton";
 import { moderateScale } from "react-native-size-matters";
 import theme from "../../../config/theme";
 import { clearCart } from "../../../store/cartSlice";
+import { logoutUser } from "../../../store/onBoarding";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Home = ({ navigation }) => {
                 logout={true}
                 onPressLogout={()=>{
                   dispatch(clearCart());
-                  navigation.navigate('AuthStack')
+                  dispatch(logoutUser());
                 }}
                 onPressCart={()=>navigation.navigate('Cart')}
                 cartCount={cartItems?.length}
@@ -63,6 +64,9 @@ const Home = ({ navigation }) => {
         placeholder="Search"
         onChangeText={setSearch}
         labelValue={search}
+        rightIcon={search?"cross":null}
+        
+        onPressRight={()=>setSearch('')}
         />
       <View style={styles.tabsContainer}>
         <FlatList
@@ -95,6 +99,12 @@ const Home = ({ navigation }) => {
         data={filtered}
         keyExtractor={(item) => item?.id.toString()}
         renderItem={renderItem}
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyIcon}>📦</Text>
+            <Text style={styles.emptyText}>No Products Found</Text>
+          </View>
+        }
         />
         
         </Wrapper>
@@ -111,7 +121,8 @@ tabsContainer: {
   marginVertical: moderateScale(10),
 },
 tab: {
-  paddingVertical: moderateScale(6),
+  paddingTop: moderateScale(5),
+  paddingBottom:moderateScale(6.5),
   paddingHorizontal: moderateScale(15),
   borderRadius: moderateScale(20),
   backgroundColor: "#f0f0f0",
@@ -131,5 +142,24 @@ activeTabText: {
   fontFamily:theme.fonts.semiBold,
   fontSize:theme.fontSizes.regular
 },
+
+
+emptyContainer: {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: moderateScale(100), // adjust as needed
+},
+emptyIcon: {
+  fontSize: moderateScale(50),
+  marginBottom: moderateScale(10),
+},
+emptyText: {
+  fontSize: theme.fontSizes.large,
+  fontFamily: theme.fonts.semiBold,
+  color: theme.colors.text,
+  marginBottom: moderateScale(5),
+},
+
 
 })

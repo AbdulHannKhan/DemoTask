@@ -31,7 +31,6 @@ const SignIn = ({navigation, route}) => {
   return (
     <Wrapper>
      
-      {/* Animated Logo */}
       <View style={[styles.marginBM, styles.centerAlign]}>
         <Image 
         source={require('../../assets/images/bitrupt.png')} 

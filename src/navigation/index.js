@@ -81,11 +81,9 @@ console.log("userrrrrrrr",userData);
       <MainStack.Navigator screenOptions={{headerShown: false}}>
 
 
-      {userData ? (
-          // ✅ Agar userData hai to HomeStack
+      {userData && Object.keys(userData).length > 0 ? (
           <MainStack.Screen name="HomeStack" component={HomeStack} />
         ) : (
-          // ✅ Agar login nahi hai to AuthStack
           <MainStack.Screen name="AuthStack" component={AuthStack} />
         )}
 

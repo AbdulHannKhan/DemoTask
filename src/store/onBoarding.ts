@@ -74,7 +74,6 @@ export const authSlice = createSlice({
     setAccessToken: (state, action) => {
       state.accessToken = action.payload;
     },
-
     setLogout: (state, action) => {
       state.logout = action.payload;
     },
@@ -109,6 +108,13 @@ export const authSlice = createSlice({
     setFcmToken: (state, action) => {
       state.fcmToken = action.payload;
     },
+    logoutUser: (state) => {
+      state.userData = {};    
+     
+    },
+
+
+
   },
   extraReducers: builder => {
     createAsyncCases(builder, login, {
@@ -119,11 +125,6 @@ export const authSlice = createSlice({
         setUser({ id: action.payload.body?.userDetailId?.toString() });
       },
     });
-
-   
-
-    
-
   
   },
 });
@@ -142,6 +143,7 @@ export const {
   setInitialCountryCode,
   setInitialCountry,
   setFcmToken,
+  logoutUser
 } = authSlice.actions;
 
 export default authSlice.reducer;

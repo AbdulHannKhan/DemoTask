@@ -154,9 +154,9 @@ const Input = ({
               {rightIcon ? (
                 <Icon
                   name={rightIcon}
-                  type="MaterialCommunityIcons"
+                  type="Entypo"
                   color={theme.colors.text}
-                  size={moderateScale(22)}
+                  size={moderateScale(18)}
                 />
               ) : (
                 <Icon

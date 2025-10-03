@@ -4,6 +4,7 @@ import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 import theme from "../config/theme";
 
 const ProductCard = ({ item, onPress }) => {
+    
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <Image source={{ uri: item?.image }} style={styles.image} />
