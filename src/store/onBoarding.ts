@@ -107,7 +107,6 @@ export const authSlice = createSlice({
       state.userData = {};    
      
     },
-
   },
   extraReducers: builder => {
     createAsyncCases(builder, login, {
